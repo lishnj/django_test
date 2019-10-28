@@ -1,0 +1,50 @@
+与项目同名的目录中是配置文件，
+    settings.py 主配置文件
+    urls.py url路由文件
+    wsgi.py 网络通信接口
+templates目录是html文件存放也就是MTV中的T。
+manage.py是django项目管理文件。
+
+创建APP
+　　在每个django项目中可以包含多个APP，相当于一个大型项目中的分系统、子模块、功能部件等等，相互之间比较独立，但也有联系。
+    所有的APP共享项目资源。在pycharm下方的terminal终端中输入命令：
+　　 python manage.py startapp cmdb
+    这样就创建了一个叫做cmdb的APP，django自动生成“cmdb”文件夹。
+    然后在项目的setting中写入appname“cmdb”
+
+编写路由
+    打开urls.py 导入对应模块的views文件
+
+编写业务处理逻辑
+　　业务处理逻辑都在views.py文件里。
+
+通过上面两个步骤，我们将index这个url指向了views里的index（）函数，它接收用户请求，并返回一个字符串。
+
+运行web服务
+    命令行的方式是：python manage.py runserver 127.0.0.1:8000
+
+返回HTML文件
+    写一个index.html，放在templates目录下，再在views.py中添加方法
+
+使用静态文件
+    在django中，一般将静态文件放在static目录中, 接下来，在mysite中新建个static目录。然后在setts.py里配置目录
+
+使用数据库
+    django通过自带的ORM框架操作数据库，并且自带轻量级的sqlite3数据库
+    首先是注册app，在settings.py中的INSTALLED_APPS中注册app
+    接着修改DATABASES
+    再编辑models.py文件，也就是MTV中的M
+
+Django连接Oracle 11g数据库
+    安装cx-Oracle pip install cx-Oracle
+    修改settings.py中DATABASES为Oracle的连接
+    DATABASES = {
+　　　　'default': {
+　　　　　　'ENGINE': 'django.db.backends.oracle',
+　　　　　　'NAME': '数据库SID',
+　　　　　　'USER': '用户名',
+　　　　　　'PASSWORD': '密码',
+　　　　　　'HOST':'IP',
+　　　　　　'PORT':'端口号'
+　　　　}
+　　}
